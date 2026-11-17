@@ -1,0 +1,512 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1b100c">
+  <meta name="description" content="VM Crafted Wear — pelts, hide, custom attire and accessories inspired by Western, Viking and Renaissance styles.">
+  <title>VM Crafted Wear | Pelts, Hide & Custom Attire</title>
+
+  <style>
+    :root {
+      --background: #160d09;
+      --leather: #2a180f;
+      --leather-light: #3a2317;
+      --gold: #d9a966;
+      --gold-light: #f3cd8e;
+      --cream: #f7e8d1;
+      --muted: #cfbba2;
+      --line: rgba(217, 169, 102, .36);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--cream);
+      background: var(--background);
+      font-family: Georgia, 'Times New Roman', serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(22, 13, 9, .96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      padding: 16px 0;
+    }
+
+    .wordmark {
+      font-size: 1.2rem;
+      font-weight: bold;
+      letter-spacing: .08em;
+      color: var(--gold-light);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 22px;
+      font-size: .95rem;
+    }
+
+    .nav a {
+      color: var(--cream);
+      padding: 6px 0;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--gold-light);
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--gold-light);
+      outline-offset: 4px;
+    }
+
+    .hero {
+      padding: 75px 0 84px;
+      text-align: center;
+      background: radial-gradient(
+        ellipse at 50% 27%,
+        #5c3722 0%,
+        #24140d 52%,
+        #160d09 85%
+      );
+    }
+
+    .eyebrow {
+      color: var(--gold-light);
+      letter-spacing: .23em;
+      text-transform: uppercase;
+      font-size: .76rem;
+      font-weight: bold;
+    }
+
+    .hero-logo {
+      display: block;
+      width: min(720px, 100%);
+      height: auto;
+      margin: 25px auto 27px;
+      border: 2px solid #a87539;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.55);
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      line-height: 1.1;
+      color: var(--gold-light);
+      margin-bottom: 15px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.02rem, 2.5vw, 1.28rem);
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+
+    .hero-note {
+      color: var(--muted);
+      margin-bottom: 27px;
+    }
+
+    .button {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      border-radius: 5px;
+      padding: 12px 23px;
+      font-weight: bold;
+      background: linear-gradient(160deg, #f1ca8a, #c88c46);
+      color: #201108;
+      transition: transform .2s, filter .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .button-outline {
+      background: transparent;
+      color: var(--gold-light);
+      margin-left: 10px;
+    }
+
+    section {
+      scroll-margin-top: 110px;
+    }
+
+    .section {
+      padding: 75px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      color: var(--gold-light);
+      font-size: clamp(1.9rem, 5vw, 2.7rem);
+      margin-bottom: 10px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      text-align: center;
+      max-width: 690px;
+      margin: 0 auto 36px;
+    }
+
+    .collections {
+      background: #21130d;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .product-card {
+      padding: 30px 20px;
+      min-height: 225px;
+      background: linear-gradient(145deg, #452a1c, #24140d);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .card-symbol {
+      display: block;
+      color: var(--gold);
+      font-size: 1.7rem;
+      margin-bottom: 15px;
+    }
+
+    .product-card h3 {
+      color: var(--gold-light);
+      font-size: 1.3rem;
+      margin-bottom: 7px;
+    }
+
+    .product-card p {
+      color: var(--muted);
+      font-size: .96rem;
+      margin-bottom: 0;
+    }
+
+    .styles-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .style-chip {
+      border: 1px solid var(--line);
+      border-radius: 50px;
+      padding: 8px 20px;
+      color: var(--gold-light);
+      background: #2d1b13;
+    }
+
+    .about-panel {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 32px;
+      background: linear-gradient(145deg, #322015, #20120c);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .about-panel p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .contact {
+      background: #21130d;
+      border-top: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .contact-note {
+      max-width: 650px;
+      margin: 0 auto;
+      color: var(--muted);
+    }
+
+    .coming-soon {
+      display: inline-block;
+      margin-top: 20px;
+      border: 1px dashed var(--line);
+      padding: 12px 20px;
+      color: var(--gold-light);
+      border-radius: 5px;
+    }
+
+    footer {
+      padding: 25px 16px;
+      text-align: center;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 570px) {
+      .header-inner {
+        justify-content: center;
+      }
+
+      .wordmark {
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav {
+        justify-content: center;
+        gap: 6px 16px;
+      }
+
+      .hero {
+        padding: 47px 0 60px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-card {
+        min-height: 0;
+      }
+
+      .button-outline {
+        margin: 12px 0 0;
+      }
+
+      .hero .button {
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .section {
+        padding: 55px 0;
+      }
+
+      .about-panel {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="wordmark" href="#home">VM CRAFTED WEAR</a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#collections">What We Make</a>
+        <a href="#about">Our Story</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="container">
+
+        <p class="eyebrow">Crafted with Character</p>
+
+        <img
+          class="hero-logo"
+          src="vm-logo.jpg"
+          width="970"
+          height="478"
+          alt="VM Crafted Wear shield logo"
+        >
+
+        <h1>VM Crafted Wear</h1>
+
+        <p class="hero-subtitle">
+          Pelts • Hide • Custom Attire &amp; Accessories
+        </p>
+
+        <p class="hero-note">
+          Western • Viking • Renaissance Inspired
+        </p>
+
+        <a class="button" href="#collections">
+          Explore Our Craft
+        </a>
+
+        <a class="button button-outline" href="#contact">
+          Get in Touch
+        </a>
+
+      </div>
+    </section>
+
+    <section class="section collections" id="collections">
+      <div class="container">
+
+        <h2 class="section-title">What We Make</h2>
+
+        <p class="section-intro">
+          A first look at the kinds of distinctive
+          handcrafted pieces VM Crafted Wear is
+          being built around.
+        </p>
+
+        <div class="grid">
+
+          <article class="product-card">
+            <span class="card-symbol">❖</span>
+            <h3>Pelts</h3>
+            <p>
+              Natural textures and statement
+              pieces with old-world character.
+            </p>
+          </article>
+
+          <article class="product-card">
+            <span class="card-symbol">✦</span>
+            <h3>Hide</h3>
+            <p>
+              Hide and leather-inspired
+              craftsmanship with rugged detailing.
+            </p>
+          </article>
+
+          <article class="product-card">
+            <span class="card-symbol">⚜</span>
+            <h3>Custom Attire</h3>
+            <p>
+              Distinctive clothing inspired by
+              Western, Viking and Renaissance
+              traditions.
+            </p>
+          </article>
+
+          <article class="product-card">
+            <span class="card-symbol">◆</span>
+            <h3>Accessories</h3>
+            <p>
+              Personalized finishing touches
+              and custom accessories.
+            </p>
+          </article>
+
+        </div>
+
+        <div class="styles-row">
+          <span class="style-chip">Western</span>
+          <span class="style-chip">Viking</span>
+          <span class="style-chip">Renaissance</span>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+
+        <h2 class="section-title">Our Story</h2>
+
+        <div class="about-panel">
+          <p>
+            VM Crafted Wear is a developing custom
+            clothing and accessories business that
+            draws inspiration from the rugged American
+            West, the bold spirit of Viking design,
+            and the detail of Renaissance attire.
+
+            This is an early concept website,
+            with more information and real product
+            photos to come.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container">
+
+        <h2 class="section-title">
+          Let's Create Something Distinctive
+        </h2>
+
+        <p class="contact-note">
+          Interested in pelts, hide, custom attire,
+          or accessories? Business contact details
+          and ordering information will be added
+          here once available.
+        </p>
+
+        <span class="coming-soon">
+          Contact Details Coming Soon
+        </span>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © <span id="year">2026</span>
+    VM Crafted Wear. Concept website.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
